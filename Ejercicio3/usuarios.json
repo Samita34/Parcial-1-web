@@ -1,0 +1,17 @@
+[
+    {
+        "nombre": "Juan Pérez",
+        "correoElectronico": "juan@example.com",
+        "pais": "México"
+    },
+    {
+        "nombre": "María López",
+        "correoElectronico": "maria@example.com",
+        "pais": "Argentina"
+    },
+    {
+        "nombre": "Pedro Sánchez",
+        "correoElectronico": "pedro@example.com",
+        "pais": "España"
+    }
+]

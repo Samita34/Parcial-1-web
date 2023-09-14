@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2-Registro para Webinar</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form id="registroForm">
+            <div class="form-group">
+              <label for="nombre">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                required
+              />
+              <div class="invalid-feedback">
+                El nombre debe tener al menos 3 caracteres.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Correo Electrónico:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+              <div class="invalid-feedback">
+                El correo debe tener una terminacion correcta.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="pais">País:</label>
+              <select class="form-control" id="pais" name="pais" required>
+                <option value="">Seleccionar país</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Chile">Chile</option>
+                <option value="México">México</option>
+                <option value="España">España</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $("#nombre").on("input", function () {
+        validarNombre();
+      });
+      $("#email").on("input", function () {
+        validarEmail();
+      });
+      $(document).ready(function () {
+        function validarNombre() {
+          var nombre = $("#nombre").val();
+          if (nombre.length < 3) {
+            $("#nombre").addClass("is-invalid");
+            return false;
+          } else {
+            $("#nombre").removeClass("is-invalid");
+            return true;
+          }
+        }
+        function validarEmail() {
+          var email = $("#email").val();
+          var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+          if (!emailRegex.test(email)) {
+            $("#email").addClass("is-invalid");
+            return false;
+          } else {
+            $("#email").removeClass("is-invalid");
+            return true;
+          }
+        }
+        function validarPais() {
+          var pais = $("#pais").val();
+          if (pais === "") {
+            $("#pais").addClass("has-error");
+            return false;
+          } else {
+            $("#pais").removeClass("has-error");
+            return true;
+          }
+        }
+        $("#registroForm").submit(function (event) {
+          event.preventDefault();
+          var nombreValido = validarNombre();
+          var emailValido = validarEmail();
+          var paisValido = validarPais();
+          if (!nombreValido || !emailValido || !paisValido) {
+            alert("Por favor, complete correctamente el formulario.");
+          } else {
+            Swal.fire({
+              icon: "success",
+              title: "Registro exitoso!",
+              text: 'Haz clic en "OK" para cerrar esta alerta.',
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

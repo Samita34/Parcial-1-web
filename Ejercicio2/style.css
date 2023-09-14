@@ -1,0 +1,13 @@
+.container {
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.has-error {
+    border-color: #f00 !important;
+}
+.invalid-feedback {
+    color: #f00;
+    display: none;
+}

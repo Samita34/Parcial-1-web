@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 1-TablaJquery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <table id="miTabla" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Ciudad</th>
+              </tr>
+            </thead>
+            <tbody id="miTabla">
+              <script>
+                $(document).ready(function () {
+                  var datos = [
+                    { nombre: "Juan", edad: 25, ciudad: "Ciudad A" },
+                    { nombre: "María", edad: 30, ciudad: "Ciudad B" },
+                    { nombre: "Pedro", edad: 22, ciudad: "Ciudad C" },
+                    { nombre: "Luisa", edad: 28, ciudad: "Ciudad A" },
+                    { nombre: "Carlos", edad: 35, ciudad: "Ciudad B" },
+                  ];
+                  function cargarDatos() {
+                    var tbody = $("#miTabla tbody");
+                    $.each(datos, function (index, item) {
+                      var fila =
+                        "<tr><td>" +
+                        item.nombre +
+                        "</td><td>" +
+                        item.edad +
+                        "</td><td>" +
+                        item.ciudad +
+                        "</td></tr>";
+                      tbody.append(fila);
+                    });
+                  }
+                  cargarDatos();
+                });
+              </script>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
